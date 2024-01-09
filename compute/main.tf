@@ -14,9 +14,11 @@ provider "google" {
 }
 
 resource "google_compute_instance" "<set_name>" {
-  name         = "<set_name>"
-  machine_type = "<machine-type>"
-  tags         = ["http-server","https-server"]
+  name                      = "<set_name>"
+  machine_type              = "<machine-type>"
+  tags                      = ["http-server","https-server"]
+  allow_stopping_for_update = true
+  
   boot_disk {
     initialize_params {
       image = "debian-cloud/debian-11"
@@ -26,5 +28,5 @@ resource "google_compute_instance" "<set_name>" {
     network = "default"
     access_config {
       }
-    }
+    }  
   }
